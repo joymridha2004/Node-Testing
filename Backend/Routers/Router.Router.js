@@ -1,6 +1,7 @@
 import express from "express";
 import { loginUser, signupUser, forgotPassword, getUsers, getUserById, createUser, updateUser, deleteUser } from "../Controllers/user.controller.js";
 import { getAllClinics, getClinicById, createClinic, updateClinic, deleteClinic, getClinicsByUserId } from "../Controllers/clinic.controller.js";
+import { getAllClinicPatients, getClinicPatientById, createClinicPatient, updateClinicPatient, deleteClinicPatient, getClinicPatientsByClinicId } from "../Controllers/clinicPatient.controller.js";
 
 const router = express.Router();
 
@@ -26,5 +27,13 @@ router.get("/clinics/user/:userId", getClinicsByUserId); // Get clinics by user 
 router.post("/clinic/create/", createClinic); // Create new clinic
 router.put("/clinic/update/:id", updateClinic); // Update clinic by ID
 router.delete("/clinic/delete/:id", deleteClinic); // Delete clinic by ID
+
+// Clinic Patient routes
+router.get("/clinic-patients/", getAllClinicPatients); // Get all clinic patients
+router.get("/clinic-patient/:id", getClinicPatientById); // Get clinic patient by ID
+router.get("/clinic-patients/clinic/:clinicId", getClinicPatientsByClinicId); // Get clinic patients by clinic ID
+router.post("/clinic-patient/create/", createClinicPatient); // Create new clinic patient
+router.put("/clinic-patient/update/:id", updateClinicPatient); // Update clinic patient by ID
+router.delete("/clinic-patient/delete/:id", deleteClinicPatient); // Delete clinic patient by ID
 
 export { router };
